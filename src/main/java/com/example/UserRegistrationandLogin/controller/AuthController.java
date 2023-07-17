@@ -11,4 +11,11 @@ public class AuthController {
     public String home() {
         return "index";
     }
+
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model){
+        UserDto user = new UserDto();
+        model.add.addAttribute("user", user);
+        return "register";
+    }
 }
