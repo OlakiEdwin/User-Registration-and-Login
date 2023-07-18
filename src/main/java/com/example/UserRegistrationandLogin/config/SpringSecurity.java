@@ -1,4 +1,4 @@
-package com.example.UserRegistrationandLogin;
+package com.example.UserRegistrationandLogin.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,14 +27,14 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests((authorize)) ->
+                .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .loginProcessingUrl("/users")
+                                .loginProcessingUrl("/login")
                                 .defaultSuccessUrl("/users")
                                 .permitAll()
                 ).logout(
@@ -47,7 +47,8 @@ public class SpringSecurity {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        .userDetailsService(userDetailsService)
+        auth
+                .userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
 }

@@ -1,15 +1,14 @@
 package com.example.UserRegistrationandLogin.service;
 
-import net.javaguides.springboot.dto.UserDto;
-import net.javaguides.springboot.entity.User;
+import com.example.UserRegistrationandLogin.dto.UserDto;
+import com.example.UserRegistrationandLogin.entity.User;
 
 import java.util.List;
 
 public interface UserService {
+    void saveUser(UserDto userDto);
 
-    void saveUser(USerDto userDto);
-
-    User findUserByEmail(String email);
+    User findByEmail(String email);
 
     List<UserDto> findAllUsers();
 }

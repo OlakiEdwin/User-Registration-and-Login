@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -22,5 +24,5 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy="roles")
-    private List<Users> users;
+    private List<User> users;
 }
